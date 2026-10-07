@@ -1,13 +1,13 @@
 # jamCR
 
-jamCR is a vision project for Clash Royale. It builds a synthetic dataset
-from game sprites and arena assets, then uses that data to train a YOLO pose
-model that detects both the bounding boxes and exact positions of troops and
-buildings.
+This project creates synthetic Clash Royale scenes and labeled YOLO pose data
+from game sprites and arena assets. Each labeled troop or building has a
+bounding box and a keypoint marking its world anchor, providing training data
+for pose detection models.
 
 ## Examples
 
-Synthetic scene with generated labels:k
+Synthetic scene with generated labels:
 
 ![Synthetic scene with bounding boxes and world-anchor keypoints](docs/images/debug_render_sample.png)
 
@@ -59,6 +59,23 @@ To inspect the arena coordinate system:
 uv run python dataset_builder/show_coordinates.py
 ```
 
-## Dataset-builder layout
+## Dataset-builder files
 
-- `dataset_builder/` — synthetic scene generation, rendering, augmentation and YOLO pose-label generation.
+- `asset_manager.py` — loads sprite images and troop/building metadata from
+  the configured external assets.
+- `augmentations.py` — defines the image and sprite augmentation settings.
+- `benchmark_models.py` — generates the frozen synthetic test set and
+  evaluates YOLO pose models against real and synthetic test data.
+- `camera.py` — converts between arena world coordinates and image pixels.
+- `config.py` — loads the asset-directory setting and validates its path.
+- `constants.py` — defines tower placements, arena restrictions and troop
+  swarm settings.
+- `dataset_builder.py` — generates cropped images, YOLO pose labels and
+  dataset configuration files.
+- `effects.py` — implements sprite appearance effects used during rendering.
+- `generator.py` — builds random scenes by placing troops, buildings, towers
+  and arena details.
+- `renderer.py` — composites scenes, applies augmentations and creates
+  bounding-box and keypoint labels.
+- `scene.py` — defines scene, asset, sprite and label data structures.
+- `show_coordinates.py` — creates an image showing the arena coordinate grid.
