@@ -1,0 +1,25 @@
+[project]
+name = "jamcr"
+version = "0.1.0"
+description = "Synthetic Clash Royale scene generation and YOLO pose dataset tools"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.14.0",
+    "adb-shell>=0.4.4",
+    "av>=18.0.0",
+    "fastapi>=0.141.1",
+    "lxml>=6.1.1",
+    "mss>=10.2.0",
+    "numpy>=2.5.1",
+    "opencv-python>=5.0.0.93",
+    "pillow>=12.3.0",
+    "python-dotenv>=1.1.1",
+    "pyyaml>=6.0.3",
+    "scipy>=1.18.0",
+    "torch>=2.13.0",
+    "torchvision>=0.28.0",
+    "transformers>=5.13.0",
+    "ultralytics>=8.4.117",
+    "uvicorn>=0.52.4",
+]
